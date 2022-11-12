@@ -585,8 +585,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 
--- My additions
-
+-- Monitor setup
 awful.spawn.with_shell("xrandr --output HDMI-A-0 --mode 1920x1080 --output DVI-D-0 --mode 1920x1080 --left-of HDMI-A-0 --output DVI-D-0 --rotate left")
 
 
