@@ -24,8 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os 
-import subprocess 
+import os
+import subprocess
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -88,6 +88,15 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
+group_names = 'WWW DEV SYS DOC CHAT MUS VID GFX'.split()
+groups = [Group(name, layout='max') for name in group_names]
+for i, name in enumerate(group_names):
+    indx = str(i + 1)
+    keys += [
+            Key([mod], indx, lazy.group[name].toscreen()),
+            Key([mod, 'shift'], indx, lazy.window.togroup(name))]
+
+"""
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
@@ -113,6 +122,7 @@ for i in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+"""
 
 layouts = [
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -131,7 +141,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrains Mono Nerd Font",
+    font="Fira Sans Medium",
     fontsize=12,
     padding=3,
 )
@@ -141,6 +151,11 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Image(
+                    filename = "~/.config/qtile/icons/python.png",
+                    scale = "False",
+                    margin_x = 5
+                    ),
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
@@ -153,10 +168,11 @@ screens = [
                 ),
                 widget.TextBox("default config", name="default"),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Net(format='{down} ↓↑ {up}'),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                widget.Clock(format="%I:%M %p %a, %b %d"),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
             24,

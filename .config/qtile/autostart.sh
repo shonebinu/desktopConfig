@@ -4,4 +4,6 @@ xrandr --output HDMI-A-0 --primary --mode 1920x1080 --pos 1080x340 --rotate norm
 
 picom -b &
 
-nitrogen --restore
+nitrogen --restore &
+
+pragha -p -f -u -x
