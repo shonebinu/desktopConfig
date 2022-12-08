@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-rhythmbox-client --play
+pragha -p -f
