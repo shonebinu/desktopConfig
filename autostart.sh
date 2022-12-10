@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-rhythmbox-client --play
+# Install MPV for music
+mpv --no-video --volume=25 --shuffle /home/shonebinu/Music/Lofi/*
