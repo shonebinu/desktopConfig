@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mpv --no-video --volume=20 --shuffle /home/shonebinu/Music/backgrounds --audio-device=pulse/alsa_output.pci-0000_06_00.6.analog-stereo & #Control volume with playerctl #list all audio devices in mpv with 'mpv --audio-device=help'
+mpv --no-video --volume=15 --shuffle /home/shonebinu/Music/backgrounds --audio-device=pulse/alsa_output.pci-0000_06_00.6.analog-stereo & #Control volume with playerctl #list all audio devices in mpv with 'mpv --audio-device=help'
 
 while true
 do
